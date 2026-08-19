@@ -1,4 +1,4 @@
-# 私人訂購頁｜限定預購網站產生器
+[README.md](https://github.com/user-attachments/files/31208042/README.md)# 私人訂購頁｜限定預購網站產生器
 
 > 展場、快閃、受邀限定販售用的預購網站。動態密碼閘門、名片驗身份自動切折扣價、訂金尾款分階段，跑在 Cloudflare + Google 上，維護成本 $0。
 
@@ -64,7 +64,7 @@
 ![送出失敗時的錯誤總覽](assets/readme/validation.png)
 
 **手機也是這樣**
-客人多半是現場拿手機掃 QR 進來，所以手機版不是縮小版而是重排過的：置底總計列改成兩行、按鈕縮短、底部留出 iPhone 安全區。
+客人多半是現場拿手機掃 QR 進來，所以手機版不是縮小版而是重排過的：置底總計列改成兩行、按鈕縮短、底部避開手機的系統操作區。
 
 ![手機版商品卡與置底總計列](assets/readme/mobile.png)
 
@@ -150,3 +150,4 @@ node --input-type=module --check < worker.js  # Worker 語法
 ## License
 
 MIT
+
