@@ -594,6 +594,26 @@ const SUPPORT_CONTACT = "{{聯絡信箱}}";
 const ORDER_RECIPIENT = "__ORDER_EMAIL__";
 const SHEET_HOOK = "__SHEET_HOOK__";   // 訂單總表 webhook（由 Worker 環境變數注入，空值則略過）
 
+/* ================= Apps Script 預熱 =================
+   Apps Script 的容器閒置後會被 Google 回收，下次請求得先冷啟動。
+   實測同一支什麼都不做的 doGet：冷的要 24.7 秒，熱的只要 1.7 秒。
+   客人還在填表時就先打一次無副作用的 GET 把容器叫醒，
+   等他按下送出，容器已經是熱的，成功頁就跳得快。
+   用 no-cors 是因為我們根本不需要讀回應，只要這個請求有到就好。 */
+let _warmedAt = 0;
+function warmUpHook() {
+  if (!SHEET_HOOK || SHEET_HOOK.indexOf("__") === 0) return;   // 佔位符未注入時不打
+  const now = Date.now();
+  if (now - _warmedAt < 60000) return;                          // 一分鐘內不重複，避免濫發
+  _warmedAt = now;
+  fetch(SHEET_HOOK, { method: "GET", mode: "no-cors", cache: "no-store" }).catch(() => {});
+}
+warmUpHook();                                    // 進站先叫醒一次
+// 開始填表、選商品、捲條款都代表離送出不遠了，順手再確認容器還熱著
+document.addEventListener("focusin", e => {
+  if (e.target.closest && e.target.closest("#orderForm")) warmUpHook();
+});
+
 /* ================= 運費（每個品牌自訂）=================
    cvs:false 的商品材積超過超商規範，只能宅配 */
 const SHIPPING = {

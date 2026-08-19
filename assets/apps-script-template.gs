@@ -64,8 +64,10 @@ function doPost(e) {
     sh.appendRow(row);
     var r = sh.getLastRow();
     sh.getRange(r, 1, 1, CONFIG.HEADERS.length).setWrap(true).setVerticalAlignment("top");
-    sh.autoResizeRows(r, 1);
     SpreadsheetApp.flush();   // 確保資料真的落地後才釋放鎖，重試才查得到
+    // 註：這裡刻意不呼叫 autoResizeRows()。那只是把列高調整到剛好，
+    //     純外觀、卻要多花一次試算表往返，而客人正在等成功頁。
+    //     想整理版面時手動執行 formatSheet() 即可。
 
     // 通知信：公司收件、填單人收副本；寄信失敗不影響訂單寫入
     var note = "";
