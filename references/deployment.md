@@ -143,7 +143,7 @@ python3 scripts/gen_keys.py <品牌名> <正式網址> <輸出目錄> <QR色碼>
   **判斷方法**：試算表出現訂單編號相同、時間差幾十秒的兩列，就是這個問題。
 - **media query 要放在對應的基本樣式之後**。同樣特異性下後面的規則會覆蓋前面的，
   手機版區塊寫在前面等於完全沒生效——實際踩過，手機底部總計列變成兩倍高才發現。
-- **置底固定列要處理 iPhone 安全區**：`padding-bottom: calc(12px + env(safe-area-inset-bottom,0px))`，
+- **置底固定列要處理手機安全區**：`padding-bottom: calc(12px + env(safe-area-inset-bottom,0px))`，
   否則內容會被底部的 home indicator 區域推得很奇怪。
 - **同一個外部連結會出現在好幾個地方**（成功頁按鈕、匯款資訊文字、頁尾），
   漏改一處就會「有的按鈕能用、有的死掉」。check_site.js 已加入一致性檢查。
