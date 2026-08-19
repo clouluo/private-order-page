@@ -81,7 +81,7 @@ const iMob  = html.search(/@media\(max-width:600px\)\{[^}]*\.totalbar \.in\{/);
 if (iBase >= 0 && iMob >= 0) {
   t(iMob > iBase, "手機版總計列樣式排在基本樣式之後（順序錯會被覆蓋）");
 }
-t(/env\(safe-area-inset-bottom/.test(html), "置底列有處理 iPhone 安全區");
+t(/env\(safe-area-inset-bottom/.test(html), "置底列有處理手機安全區");
 
 // 5.7) 超商取貨要先選品牌（7-11／全家）再填店名，不能只給一個自由填寫的門市欄位
 //      實際發生過：客人直接打「711台北濟新」，工作人員看不出到底是哪一家超商
