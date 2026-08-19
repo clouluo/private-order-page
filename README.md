@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/31208042/README.md)# 私人訂購頁｜限定預購網站產生器
+私人訂購頁｜限定預購網站產生器
 
 > 展場、快閃、受邀限定販售用的預購網站。動態密碼閘門、名片驗身份自動切折扣價、訂金尾款分階段，跑在 Cloudflare + Google 上，維護成本 $0。
 
