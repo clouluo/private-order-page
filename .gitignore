@@ -1,0 +1,29 @@
+# 機密：金鑰與匯出的網站檔案，絕對不要上傳
+TOTP_SECRET.txt
+*-preorder/
+site.html
+worker.js
+apps-script.gs
+*.env
+.env*
+
+# 系統檔
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+
+# 相依套件與快取
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 輸出
+*.zip
+qr/
