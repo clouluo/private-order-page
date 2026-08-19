@@ -26,4 +26,5 @@ venv/
 
 # 輸出
 *.zip
+*.skill
 qr/
